@@ -13,7 +13,7 @@ int main()
 {
 	double x;
 	double eps;
-	double c;
+	int c = 1;
 	printf("Enter x value: ");
 	scanf("%lf", &x);
 	printf("Enter eps value: ");
@@ -27,11 +27,15 @@ int main()
 			break;
 		}
 		y += arg;
+		c++;
 	}
 
+	printf("Quantity of elements: %d\n", c);
 	printf("y = cos(x) = %lf \n", y);
+	printf("(check) y = cos(x) = %lf\n\n", cos(x));
 
 	y = 1;
+	c = 1;
 	for (int i = 1; ; i++)
 	{
 		double arg = pow(x, i) / factorial(i);
@@ -40,11 +44,15 @@ int main()
 			break;
 		}
 		y += arg;
+		c++;
 	}
 
-	printf("y = e ^ x = %lf \n", y);
+	printf("Quantity of elements: %d\n", c);
+	printf("(check) y = e ^ x = %lf\n", exp(x));
+	printf("y = e ^ x = %lf \n\n", y);
 
 	y = x;
+	c = 1;
 	if (fabs(x) > 1)
 	{
 		printf("y = arctg(x) = inf \n", y);
@@ -60,9 +68,10 @@ int main()
 			}
 			y += arg;
 		}
+		printf("Quantity of elements: %d\n", c);
 		printf("y = arctg(x) = %lf \n", y);
+		printf("(check) y =  arctg(x) = %lf\n", atan(x));
 	}
-	
 
 	printf("\nPress any key...\n");
 	getch();

@@ -7,7 +7,7 @@ int main()
 {
 	int arr[50];
 	int lastElementIndex = 0;
-	int average = 0;
+	double average = 0;
 	printf("Enter the values of array: ");
 	for (int i = 0; i < 50; i++)
 	{
@@ -47,7 +47,7 @@ int main()
 		printf("%d element: %d\n", i + 1, arr[i]);
 	}
 
-	printf("Average array item is: %d\n", average);
+	printf("Average array item is: %lf\n", average);
 	printf("Minimum array value is: %d\n", arr[0]);
 	printf("Maximum array value is: %d\n", arr[lastElementIndex]);
 	printf("\nPress any key...\n");
