@@ -31,7 +31,7 @@ int main()
 	strcat(path, basePath);
 	strcat(path, filename);
 
-	FILE* evenFp = fopen(path, "w");
+	FILE* evenFp = fopen(path, "r");
 
 	printf("¬ведите название файла дл€ нечетных чисел: ");
 
@@ -42,24 +42,19 @@ int main()
 	strcat(path, basePath);
 	strcat(path, filename);
 
-	FILE* oddFp = fopen(path, "w");
+	FILE* oddFp = fopen(path, "r");
 
 	int numbersCounter = filelength(_fileno(fp)) / sizeof(int);
-	
-	int allNumbers[200];
 
-	
+	char evenNumbersString[256] = "\0";
+	char oddNumbersString[256] = "\0";
 
-	fread(&allNumbers, sizeof(int), numbersCounter, fp);
-
-	for (int i = 0; i < numbersCounter; i++)
+	if (evenFp)
 	{
-		char message[12];
-		sprintf(message, "%d ", allNumbers[i]);
-		if (allNumbers[i] % 2 == 0)
-			fprintf(evenFp, "%s", message);
-		else
-			fprintf(oddFp, "%s", message);
+		while ((fgets(evenNumbersString, sizeof(int), evenFp)) != NULL)
+		{
+			printf("%s.", evenNumbersString);
+		}
 	}
 
 	fclose(evenFp);

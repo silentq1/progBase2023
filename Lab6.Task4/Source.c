@@ -21,49 +21,22 @@ int main()
 	printf("%s", path);
 	FILE* fp = fopen(path, "r");
 
-
-	printf("Введите название файла для четных чисел: ");
-
-	scanf("%s", &filename);
-
-	path[0] = '\0';
-
-	strcat(path, basePath);
-	strcat(path, filename);
-
-	FILE* evenFp = fopen(path, "w");
-
-	printf("Введите название файла для нечетных чисел: ");
-
-	scanf("%s", &filename);
-
-	path[0] = '\0';
-
-	strcat(path, basePath);
-	strcat(path, filename);
-
-	FILE* oddFp = fopen(path, "w");
-
 	int numbersCounter = filelength(_fileno(fp)) / sizeof(int);
-	
+
 	int allNumbers[200];
 
-	
-
 	fread(&allNumbers, sizeof(int), numbersCounter, fp);
-
+	printf("\nКоличество элементов: %d", numbersCounter);
+	int sum = 0;
 	for (int i = 0; i < numbersCounter; i++)
 	{
-		char message[12];
-		sprintf(message, "%d ", allNumbers[i]);
-		if (allNumbers[i] % 2 == 0)
-			fprintf(evenFp, "%s", message);
-		else
-			fprintf(oddFp, "%s", message);
+		sum += allNumbers[i];
 	}
 
-	fclose(evenFp);
-	fclose(oddFp);
+	double average = sum / numbersCounter;
+	printf("\nСумма элементов: %d", sum);
+	printf("\nСреднее арифметическое элементов: %.2lf", average);
+
 	fclose(fp);
 
 	printf("\nНажмите любую клавишу...\n");

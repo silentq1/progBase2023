@@ -11,26 +11,24 @@ int main()
 	SetConsoleOutputCP(1251);
 
 
-	printf("¬ведите путь к файлу: ");
+	printf("¬ведите путь: ");
 	char filename[255];
 	char c;
 	scanf("%s", &filename);
+	strcat(filename, "\\data.bin");
 
 	printf("¬ведите элементы массива(последний элемент 0): ");
 	int newarr[100];
+
 	FILE* fp = fopen(filename, "w");
 	for (int i = 0; i < 100; i++)
 	{
-		char num[10];
 		scanf("%d", &newarr[i]);
-		_itoa(newarr[i], num, 10);
-		printf("%s ", num);
-		fputs(num, fp);
+
+		fwrite(&newarr[i], sizeof(int), 1, fp);
 
 		if (newarr[i] == 0)
 			break;
-
-		fputs(" ", fp);
 	}
 
 
